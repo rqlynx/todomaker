@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: 81805
+Build-Jdk: 11.0.2
+Implementation-Title: TodoMaker
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: jp.abc
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/TodoMaker
+Created-By: Maven Integration for Eclipse
+

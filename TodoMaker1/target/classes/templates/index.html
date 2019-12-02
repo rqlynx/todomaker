@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>TodoMaker - top</title>
+<!-- Milligramスタイルシート -->
+
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+
+<style type="text/css">
+h1 {
+  font-size: 18pt;
+  font-weight: bold;
+  color: gray;
+}
+body {
+  font-size: 13pt;
+  color: gray;
+  margin: 5px 25px;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 30px;
+}
+
+.breadcrumbs {
+	width: 980px;
+	margin: 10px auto 0;
+}
+
+.breadcrumbs ul {
+	display: table;
+	font-size: 13px;
+}
+
+.breadcrumbs ul p {
+	margin: 0 10px 0 0;
+	font-size: 13px;
+	float: left;
+}
+
+.breadcrumbs ul p:first-child::before {
+	padding: 0 3px 0 0;
+	content: "\f015";
+	font-size: 14px;
+}
+
+.breadcrumbs ul p::before {
+	padding: 0 10px 0 0;
+	content: "\f105";
+	font-size: 14px;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h2>Top page</h2>
+		</div>
+		<!-- breadcrumbs -->
+		<div class="row breadcrumbs">
+			<ul>
+				<p><a href="/">TodoMaker</a></p>
+			</ul>
+		</div>
+		<!-- Mainpage本体 -->
+		<div class="row">
+
+        <!-- Googleカレンダーを埋め込んだ -->
+        <!-- 共用アカウントを作成して埋め込んだ -->
+		<iframe src="https://calendar.google.com/calendar/embed?src=dacalen2%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+			<!-- 左メインカラム -->
+			<div class="column column-67 maincolumn">
+
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Date</th>
+						<th>Todo</th>
+					</tr>
+<!-- 					<tr th:each="obj : ${datalist}">
+						<td th:text="${obj.profile.username}"></td>
+						<td th:text="${obj.time}"></td>
+						<td th:text="${obj.content}"></td>
+					</tr> -->
+				</table>
+			</div>
+			<!-- 右サイドカラム -->
+			<div class="column side-column">
+				<div class="sticky">
+					<form th:action="@{/mypage}" method="post">
+						<input class="button button-outline " type="submit" value="Mypage" />
+					</form>
+					<form action="/login" method="post">
+						<input class="button button-outline " type="submit" value="Login" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>TodoMaker - login</title>
+<!-- Milligramスタイルシート -->
+<link rel="stylesheet"
+	href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+<style type="text/css">
+body {
+	margin: 25px;
+	padding: auto;
+}
+
+.err {
+	color: red;
+}
+
+.breadcrumbs {
+	width: 980px;
+	margin: 10px auto 0;
+}
+
+.breadcrumbs ul {
+	display: table;
+	font-size: 13px;
+}
+
+.breadcrumbs ul p {
+	margin: 0 10px 0 0;
+	font-size: 13px;
+	float: left;
+}
+
+.breadcrumbs ul p:first-child::before {
+	padding: 0 3px 0 0;
+	content: "\f015";
+	font-family: FontAwesome;
+	font-size: 14px;
+}
+
+.breadcrumbs ul p::before {
+	padding: 0 10px 0 0;
+	content: "\f105";
+	font-family: FontAwesome;
+	font-size: 14px;
+}
+
+.sign {
+	padding: 50%;
+}
+</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h2>Sign Up</h2>
+		</div>
+		<div class="row breadcrumbs">
+			<ul>
+				<p>
+					<a href="/">Tweeter</a>
+				</p>
+				<p>
+					<a href="/login">Sign In</a>
+				</p>
+				<p>
+					<a href="/newuser">Sign Up</a>
+				</p>
+			</ul>
+		</div>
+		<div class="row">
+			<div class="column sign">
+				<a class="button Sign" href="/login">Sign In</a>
+			</div>
+			<div class="column">
+				<div class="err" th:text="${msg}"></div>
+				<form th:action="@{/newuser}" method="post">
+					<div>
+						<label>Username: <input type="text" name="username" />
+						</label>
+					</div>
+					<div>
+						<label>Password: <input type="password" name="password" />
+						</label>
+					</div>
+					<div>
+						<label>Password confirm: <input type="password"
+							name="password2" />
+						</label>
+					</div>
+					<div>
+						<input class="button button-outline" type="submit" value="Submit" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- JavaScripts -->
+	<script type="text/javascript">
+		$(function() {
+			$('[type=submit]').attr('disabled', true);
+			$('[name=username]').on('keyup', function() {
+				checkUserNameField();
+			});
+			$('[type=password]').on('keyup', function() {
+				checkPasswordField();
+			});
+		});
+
+		function checkUserNameField() {
+			var name = $('[name=username]').val();
+			if (name.length == 0) {
+				$('[type=submit]').attr('disabled', true);
+				$('div.err').text('Please enter a username');
+				return;
+			}
+			$('div.err').text('');
+			$('[type=submit]').attr('disabled', false);
+		}
+
+		function checkPasswordField() {
+			var p1 = $('[name=password]').val();
+			var p2 = $('[name=password2]').val();
+			if (p1 != p2) {
+				$('div.err').text('Password is not matched');
+				$('[type=submit]').attr('disabled', true);
+				return;
+			}
+			$('div.err').text('');
+			$('[type=submit]').attr('disabled', false);
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</body>
+</html>

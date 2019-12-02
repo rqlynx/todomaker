@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+<title>TodoMaker - mypage</title>
+
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+<style type="text/css">
+body {
+	margin: 25px;
+	padding: auto;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 30px;
+}
+
+.breadcrumbs {
+	width: 980px;
+	margin: 10px auto 0;
+}
+
+.breadcrumbs ul {
+	display: table;
+	font-size: 13px;
+}
+
+.breadcrumbs ul p {
+	margin: 0 10px 0 0;
+	font-size: 13px;
+	float: left;
+}
+
+.breadcrumbs ul p:first-child::before {
+	padding: 0 3px 0 0;
+	content: "\f015";
+	font-size: 14px;
+}
+
+.breadcrumbs ul p::before {
+	padding: 0 10px 0 0;
+	content: "\f105";
+	font-size: 14px;
+}
+</style>
+<body>
+	<div class="container main-container">
+
+		<div class="row">
+			<div class="col">
+				<h2>My page</h2>
+			</div>
+		</div>
+		<div class="row breadcrumbs">
+			<ul>
+				<p>
+					<a href="/">Top</a>
+				</p>
+				<p>
+					<a href="/mypage">Mypage</a>
+				</p>
+				<p>
+				    <form th:action="@{/proedit/}"  th:object="${pro}" method="post">
+				        <input type="submit" value="プロフィール編集" />
+				    </form>
+				</p>
+			</ul>
+		</div>
+
+		<!-- Mypage本体 -->
+		<div class="row">
+			<!-- 左メインカラム -->
+			<div class="column column-67 maincolumn">
+				<h3>ログイン中です</h3>
+			</div>
+			<!-- 右サイドカラム -->
+			<div class="column side-column">
+				<div class="sticky">
+					<h3>
+						<form th:action="@{/logout}" method="post">
+							<input class="button float-right" type="submit" value="Logout" />
+						</form>
+					</h3>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- JavaScripts -->
+
+</body>
+</html>
